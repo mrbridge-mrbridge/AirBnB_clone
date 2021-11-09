@@ -60,4 +60,4 @@ $
 
 <h2>Project Flow</h2>
 
-<img src="https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20211109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211109T205320Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=5bdf2f8f7c725065ecd0680253d9c700f069950abbf6a4ff6fb667deb8176305" alt="flow chart" >
+<img src="https://i.imgur.com/ovMNyEZ.png" alt="flow chart" >
