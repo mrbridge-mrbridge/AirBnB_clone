@@ -1,6 +1,6 @@
 ### 0x00. AirBnB clone - The console
 
-<img src="https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20211109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211109T205320Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=452096f1f04e678de9ba62eb6806f518b4041c8f004a3febcda4907080cea8b8"alt="Hbnb"/>
+<img src="https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20211109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211109T205320Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=452096f1f04e678de9ba62eb6806f518b4041c8f004a3febcda4907080cea8b8" alt="Hbnb"/>
 
 ### Authors
 <h3> <a href="mailto:lesliedeeshumba@gmail.com">Leslie Danai Shumba</a> </h3>
