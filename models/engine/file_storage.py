@@ -1,11 +1,20 @@
 """File Storage"""
 import json
 from models.base_model import BaseModel
+from models.City import City
+from models.State import State
+from models.Place import Place
+from models.User import User
+from models.Amenity import Amenity
+from models.Review import Review
+
 
 class FileStorage:
     """File Storage Class"""
     __objects = {}
     __file_path = 'file json'
+
+    inslist= {'BaseModel': BaseModel, 'City':City, 'State': State,'Place':Place, 'User':User, 'Amenity':Amenity, Review: Review }
 
 
     def all(self):
@@ -31,8 +40,8 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r') as f:
                 json_objects = json.load(f)
-            for key in json_objects:
-                self.__objects[key] = BaseModel(**json_objects[key])
+            for key,value in json_objects.items():
+                self.new(inslist[value['__class__']](**value))
         except:
              pass
 
