@@ -26,10 +26,8 @@ class Basemodel:
 
     def __str__(self):
         """String Format"""
-            return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
-             self.__dict__)
-
-
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
+                                     self.__dict__)
 
     def to_dict(self):
         """converts object to dict"""

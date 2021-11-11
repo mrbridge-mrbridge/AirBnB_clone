@@ -2,6 +2,8 @@
 from models.base_model import BaseModel
 
 """Place Module"""
+
+
 class Place(BaseModel):
     """Place Public instance"""
     city_id = ""
