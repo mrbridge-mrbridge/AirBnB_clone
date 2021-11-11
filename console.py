@@ -4,7 +4,7 @@ import cmd
 """
 console starting point
 """
-def HBNShell(cmd.Cmd):
+def HBNBCommand(cmd.Cmd):
     """Hbnb Shell"""
     intro = 'Welcome to the Hbnb shell"
     prompt = '(hbnb)'
