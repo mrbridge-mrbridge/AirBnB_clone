@@ -11,6 +11,16 @@ def HBNBCommand(cmd.Cmd):
     intro = 'Welcome to the Hbnb shell"
     prompt = '(hbnb)'
 
+    def emptyline(self):
+        """Empty-line"""
+        pass
+
+    def do_create()
+    def do_show()
+    def do_destroy()
+    def do_all()
+    def do_update()
+
     def do_quit(self, arg):
         """ Quit Command"""
         return True
