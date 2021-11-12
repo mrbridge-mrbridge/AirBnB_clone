@@ -131,11 +131,11 @@ class HBNBCommand(cmd.Cmd):
             if not object:
                 print('** no instance found **')
             else:
-                if lk(object, attr):
-                    aval = type(gattr(object, attr))(aval)
+                if hasattr(object, attr):
+                    aval = type(getattr(object, attr))(aval)
                 else:
-                    aval = type(gattr(object, attr))(aval)
-                    sattr(object, attr, aval)
+                    aval = type(getattr(object, attr))(aval)
+                    setattr(object, attr, aval)
                     object.updated_at = updatetime
                     models.storage.save()
 
