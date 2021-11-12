@@ -88,9 +88,9 @@ class HBNBCommand(cmd.Cmd):
          based or not on the class name"""
         if not arg:
             print([str(value) for key, value in models.storage.all().items()])
-            else:
+        else:
                 if not self.inlist.get(arg):
-                    print('** class doesn't exist **')
+                    print('** class doesn\'t exist **')
                     return False
                 print([str(value) for key, value in models.storage.all()
                        .items()
@@ -103,6 +103,7 @@ class HBNBCommand(cmd.Cmd):
         from shlex import shlex
 
         updatetime = datetime.now()
+        args = arg.split(' ', 3)
         inslist = None
         opk = None
         aval = None
@@ -131,9 +132,9 @@ class HBNBCommand(cmd.Cmd):
                 print('** no instance found **')
             else:
                 if lk(object, attr):
-                    aval = type(gattr(obj, attr))(aval)
+                    aval = type(gattr(object, attr))(aval)
                 else:
-                    aval = type(gattr(obj, attr))(aval)
+                    aval = type(gattr(object, attr))(aval)
                     sattr(object, attr, aval)
                     object.updated_at = updatetime
                     models.storage.save()
@@ -145,7 +146,6 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """EOF to exit the console"""
         return True
-
 
 if __name__ == '__main__':
     HBNBCommand()cmd.loop()
