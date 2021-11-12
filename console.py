@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import cmd, sys
+import cmd
 import models
 from models.base_model import Basemodel
 from models.City import City
@@ -89,12 +89,12 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print([str(value) for key, value in models.storage.all().items()])
         else:
-                if not self.inlist.get(arg):
-                    print('** class doesn\'t exist **')
-                    return False
-                print([str(value) for key, value in models.storage.all()
-                       .items()
-                       if type(value) is self.inlist.get(arg)])
+            if not self.inlist.get(arg):
+                print('** class doesn\'t exist **')
+                return False
+            print([str(value) for key, value in models.storage.all()
+                   .items()
+                   if type(value) is self.inlist.get(arg)])
 
     def do_update(self, arg):
         """Updates an instance based on the class nameUpdates an
@@ -146,6 +146,7 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """EOF to exit the console"""
         return True
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
