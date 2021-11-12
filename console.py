@@ -147,5 +147,5 @@ class HBNBCommand(cmd.Cmd):
         """EOF to exit the console"""
         return True
 
-if __name__ == '__main__':
-    HBNBCommand()cmd.loop()
+if __name__ == "__main__":
+    HBNBCommand().cmdloop()
