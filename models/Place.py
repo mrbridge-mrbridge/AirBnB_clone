@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-from models.base_model import BaseModel
+from models.base_model import Basemodel
 
 """Place Module"""
 
 
-class Place(BaseModel):
+class Place(Basemodel):
     """Place Public instance"""
     city_id = ""
     user_id = ""
