@@ -1,5 +1,5 @@
 """File Storage"""
-from _typeshed import Self
+
 import json
 from models.base_model import Basemodel
 from models.City import City
