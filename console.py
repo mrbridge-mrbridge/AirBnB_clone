@@ -24,19 +24,20 @@ def HBNBCommand(cmd.Cmd):
         pass
 
         inslist = {'BaseModel': Basemodel, 'City': City, 'State': State,
-               'Place': Place, 'User': User, 'Amenity': Amenity,
-               'Review': Review}
+                   'Place': Place, 'User': User, 'Amenity': Amenity,
+                   'Review': Review}
 
-    def do_create(self, inlist = None):
-        """ Creates a new instance of BaseModel, saves it (to the JSON file) and prints the id"""
+    def do_create(self, inlist=None):
+        """ Creates a new instance of BaseModel,
+        saves it (to the JSON file) and prints the id"""
         if not inlist:
             print('** class name missing **')
         elif not self.inlist.get(inlist):
             print('** class doesn\'t exist **')
 
-
     def do_show(self, arg):
-        """Prints the string representation of an instance based on the class name and id"""
+        """Prints the string representation of an instance
+        based on the class name and id"""
         inslist = None
         opk = None
         args = arg.split(' ')
@@ -47,7 +48,7 @@ def HBNBCommand(cmd.Cmd):
         if not inslist:
             print('** class name missing **')
         elif not self.inslist.get(inslist):
-            print ('** class doesn\'t exist **')
+            print('** class doesn\'t exist **')
         elif not opk:
             print('** instance id missing **')
         else:
@@ -57,7 +58,6 @@ def HBNBCommand(cmd.Cmd):
                 print('** no instance found **')
             else:
                 print(object)
-
 
     def do_destroy():
         """Deletes an instance based on the class name"""
@@ -71,7 +71,7 @@ def HBNBCommand(cmd.Cmd):
         if not inslist:
             print('** class name missing **')
         elif not self.inslist.get(inslist):
-            print ('** class doesn\'t exist **')
+            print('** class doesn\'t exist **')
         elif not opk:
             print('** instance id missing **')
         else:
@@ -84,18 +84,21 @@ def HBNBCommand(cmd.Cmd):
                 models.storage.save()
 
     def do_all(self, arg):
-        """Prints all string representation of all instances based or not on the class name"""
+        """Prints all string representation of all instances
+         based or not on the class name"""
         if not arg:
             print([str(value) for key, value in models.storage.all().items()])
             else:
                 if not self.inlist.get(arg):
                     print('** class doesn't exist **')
                     return False
-                print([str(value) for key, value in models.storage.all().items()
-                    if type(value) is self.inlist.get(arg)])
+                print([str(value) for key, value in models.storage.all()
+                       .items()
+                       if type(value) is self.inlist.get(arg)])
 
     def do_update(self, arg):
-        """Updates an instance based on the class nameUpdates an instance based on the class name"""
+        """Updates an instance based on the class nameUpdates an
+         instance based on the class name"""
         from datetime import datetime
         from shlex import shlex
 
@@ -116,7 +119,7 @@ def HBNBCommand(cmd.Cmd):
             print('** class name missing **')
 
         elif not self.inslist.get(inslist):
-            print ('** class doesn\'t exist **')
+            print('** class doesn\'t exist **')
 
         elif not opk:
             print('** instance id missing **')
@@ -134,9 +137,6 @@ def HBNBCommand(cmd.Cmd):
                     sattr(object, attr, aval)
                     object.updated_at = updatetime
                     models.storage.save()
-
-
-
 
     def do_quit(self, arg):
         """ Quit Command"""
