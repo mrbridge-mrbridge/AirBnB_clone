@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import cmd, sys
 import models
-from models.base_model import Basemodel, save
+from models.base_model import Basemodel
 from models.City import City
 from models.State import State
 from models.Place import Place

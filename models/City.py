@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-from models.base_model import BaseModel
+from models.base_model import Basemodel
 """City Module"""
 
 
-class City(BaseModel):
+class City(Basemodel):
     """City Public Instances"""
     state_id = ""
     name = ""
