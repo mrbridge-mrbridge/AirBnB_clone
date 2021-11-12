@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import cmd
+import cmd, sys
 import models
 from models.base_model import Basemodel, save
 from models.City import City
@@ -14,7 +14,7 @@ console starting point
 """
 
 
-def HBNBCommand(cmd.Cmd):
+class HBNBCommand(cmd.Cmd):
     """Hbnb Shell"""
     intro = "Welcome to the Hbnb shell"
     prompt = '(hbnb)'
