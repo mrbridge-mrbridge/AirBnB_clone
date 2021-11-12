@@ -16,7 +16,7 @@ console starting point
 
 def HBNBCommand(cmd.Cmd):
     """Hbnb Shell"""
-    intro = 'Welcome to the Hbnb shell"
+    intro = "Welcome to the Hbnb shell"
     prompt = '(hbnb)'
 
     def emptyline(self):
@@ -52,14 +52,14 @@ def HBNBCommand(cmd.Cmd):
         elif not opk:
             print('** instance id missing **')
         else:
-            t = inslist + "."opk
+            t = inslist + "." + opk
             object = models.storage.all().get(t)
             if not object:
                 print('** no instance found **')
             else:
                 print(object)
 
-    def do_destroy():
+    def do_destroy(self, arg):
         """Deletes an instance based on the class name"""
         inslist = None
         opk = None
@@ -75,7 +75,7 @@ def HBNBCommand(cmd.Cmd):
         elif not opk:
             print('** instance id missing **')
         else:
-            t = inslist + "."opk
+            t = inslist + "." + opk
             object = models.storage.all().get(t)
             if not object:
                 print('** no instance found **')
@@ -125,7 +125,7 @@ def HBNBCommand(cmd.Cmd):
             print('** instance id missing **')
 
         else:
-            t = inslist + "."opk
+            t = inslist + "." + opk
             object = models.storage.all().get(t)
             if not object:
                 print('** no instance found **')
