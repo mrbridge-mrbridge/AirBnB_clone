@@ -9,7 +9,7 @@ from models.Amenity import Amenity
 from models.Review import Review
 
 
-class FileStorage:
+class FileStorage():
     """File Storage Class"""
     __objects = {}
     __file_path = 'file json'
