@@ -59,7 +59,30 @@ def HBNBCommand(cmd.Cmd):
                 print(object)
 
 
-    def do_destroy()
+    def do_destroy():
+        """Deletes an instance based on the class name"""
+        inslist = None
+        opk = None
+        args = arg.split(' ')
+        if len(args) > 0:
+            inslist = args[0]
+        if len(args) > 1:
+            opk = args[1]
+        if not inslist:
+            print('** class name missing **')
+        elif not self.inlist.get(inlist):
+            print ('** class doesn\'t exist **')
+        elif not opk:
+            print('** instance id missing **')
+        else:
+            t = inslist + "."opk
+            object = models.storage.all().get(t)
+            if not object:
+                print('** no instance found **')
+            else:
+                del models.storage.all()[t]
+                models.storage.save()
+
     def do_all()
     def do_update()
 
