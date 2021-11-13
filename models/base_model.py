@@ -3,9 +3,10 @@
 This model is about the BaseModel class that will be inherited by all other classes
 """
 from uuid import uuid4
-import stat
 import os
 from datetime import datetime
+import models
+
 
 class BaseModel:
     """
@@ -32,6 +33,8 @@ class BaseModel:
                     self.__dict__[k] = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
                 else:
                     self.__dict__[k] = v
+        else:
+            models.storage.new(self)
 
     def __str__(self):
         """returns string representation of BaseModel"""
@@ -43,6 +46,7 @@ class BaseModel:
         with the current datetime
         """
         self.updated_at = datetime.now()
+        models.storage.save(self)
 
     def to_dict(self):
         """returns dictionary of BaseModel"""
