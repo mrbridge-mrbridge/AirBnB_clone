@@ -5,7 +5,7 @@ Test Amenity
 
 from datetime import datetime
 import inspect
-from models.Amenity import Amenity
+from models import Amenity
 from models.base_model import Basemodel
 import pep8
 import unittest
