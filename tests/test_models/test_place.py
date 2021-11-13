@@ -10,7 +10,7 @@ from models import Place
 from models.base_model import Basemodel
 import pep8
 import unittest
-Placex = Place.Placex
+Placex = Place.Place
 
 
 class TestPlaceDocs(unittest.TestCase):

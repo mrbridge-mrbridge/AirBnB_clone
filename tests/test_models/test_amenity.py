@@ -89,10 +89,7 @@ class TestAmenity(unittest.TestCase):
         """Test that Amenityz has attribute name, and it's as an empty string"""
         Amenity = Amenityz()
         self.assertTrue(hasattr(Amenity, "name"))
-        if models.storage_t == 'db':
-            self.assertEqual(Amenity.name, None)
-        else:
-            self.assertEqual(Amenity.name, "")
+        self.assertEqual(Amenity.name, "")
 
     def test_to_dict_creates_dict(self):
         """test to_dict method creates a dictionary with proper attrs"""
