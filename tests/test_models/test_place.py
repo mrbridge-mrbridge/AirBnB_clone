@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """
-Contains the TestPlaceDocs classes
+Test Place
 """
 
 from datetime import datetime
 import inspect
-import models
 from models import Place
 from models.base_model import Basemodel
 import pep8
