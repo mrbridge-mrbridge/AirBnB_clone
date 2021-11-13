@@ -1,16 +1,15 @@
 #!/usr/bin/python3
 """
-Contains the Test Amenity
+Test Amenity
 """
 
 from datetime import datetime
 import inspect
-import models
 from models import Amenity
 from models.base_model import BaseModel
 import pep8
 import unittest
-Amenityz = Amenity.Amenityz
+Amenityz = Amenity.Amenity
 
 
 class TestAmenityDocs(unittest.TestCase):
@@ -78,7 +77,6 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual(new_d["created_at"], am.created_at.strftime(t_format))
         self.assertEqual(new_d["updated_at"], am.updated_at.strftime(t_format))
 
-
     def test_str(self):
         """test that the str method has the correct output"""
         Amenity = Amenityz()
@@ -86,7 +84,8 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual(string, str(Amenity))
 
     def test_name_attr(self):
-        """Test that Amenityz has attribute name, and it's as an empty string"""
+        """Test that Amenityz has attribute name,
+         and it's as an empty string"""
         Amenity = Amenityz()
         self.assertTrue(hasattr(Amenity, "name"))
         self.assertEqual(Amenity.name, "")
@@ -113,7 +112,6 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual(type(new_d["updated_at"]), str)
         self.assertEqual(new_d["created_at"], am.created_at.strftime(t_format))
         self.assertEqual(new_d["updated_at"], am.updated_at.strftime(t_format))
-
 
 
 if __name__ == '__main__':

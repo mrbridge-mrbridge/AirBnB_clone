@@ -167,5 +167,6 @@ class TestPlace(unittest.TestCase):
         string = "[Placex] ({}) {}".format(Place.id, Place.__dict__)
         self.assertEqual(string, str(Place))
 
+
 if __name__ == '__main__':
     unittest.main()

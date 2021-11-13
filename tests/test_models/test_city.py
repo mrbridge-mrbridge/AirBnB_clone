@@ -113,5 +113,6 @@ class TestCity(unittest.TestCase):
         string = "[Cityx] ({}) {}".format(City.id, City.__dict__)
         self.assertEqual(string, str(City))
 
+
 if __name__ == '__main__':
     unittest.main()

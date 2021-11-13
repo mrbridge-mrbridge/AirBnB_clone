@@ -21,7 +21,8 @@ class test_basemodel(unittest.TestCase):
 
     def test_file(self):
         """Tests if file exists"""
-        self.assertTrue(isfile('models/base_model.py'),'File missing' )
+        self.assertTrue(isfile('models/base_model.py'), 'File missing')
+
 
 class test_to_dict(unittest.TestCase):
     """Dict Basemodel"""
@@ -33,7 +34,7 @@ class test_to_dict(unittest.TestCase):
 
     def test_dict(self):
         self.assertTrue(self.dict1, dict,
-        "Failed to generate dictionary" "type")
+                        "Failed to generate dictionary" "type")
 
     def test_method_existence(self):
         '''Test for method existence'''
@@ -51,7 +52,7 @@ class test_to_dict(unittest.TestCase):
             oj3 = Basemodel('id')
             oj4 = Basemodel(888)
 
-        except:
+        except AttributeError:
             self.fail("Failed Basemodel instantiation")
         finally:
             del oj1
@@ -59,13 +60,11 @@ class test_to_dict(unittest.TestCase):
             del oj3
             del oj4
 
-
-
     def test_instance_classmatch(self):
         '''Test if instanced object matches class'''
         oj1 = Basemodel()
         self.assertIsInstance(oj1, Basemodel,
-        "Instanced object is not Basemodel class")
+                              "Instanced object is not Basemodel class")
         del oj1
 
     def test_attr_exist(self):
@@ -98,7 +97,7 @@ class test_to_dict(unittest.TestCase):
             oj1.test13 = [-5]
             oj1.test14 = {}
             oj1.test15 = {'u': [6, 7]}
-        except:
+        except Exception:
             self.fail("Failed to dynamically add pub inst attributes")
         self.assertEqual(oj1.__dict__['test1'], 'TEST',
                          "Failed to assign value")
@@ -133,6 +132,7 @@ class test_to_dict(unittest.TestCase):
         self.assertEqual(len(oj1.__dict__), 18)
         del oj1
 
+
 class test_str(unittest.TestCase):
     """Tests the str class"""
 
@@ -140,8 +140,8 @@ class test_str(unittest.TestCase):
     def setUp(cls):
         '''Set Up '''
         cls.oj1 = Basemodel(id="1234-5678-9012",
-                             created_at="1234-05-06T01:23:45.678901",
-                             updated_at="9999-11-11T11:11:22.222222")
+                            created_at="1234-05-06T01:23:45.678901",
+                            updated_at="9999-11-11T11:11:22.222222")
         cls.god1 = '[Basemodel]'
         cls.god2 = '(1234-5678-9012)'
 
@@ -172,6 +172,7 @@ class test_str(unittest.TestCase):
         out = type(self).oj1.__str__()
         self.assertIsInstance(out, str,
                               "improper __str__ ")
+
 
 class Test_Basemodel_Constuctor(unittest.TestCase):
     '''Test Basemodel Constructor'''
@@ -218,8 +219,6 @@ class Test_Basemodel_Constuctor(unittest.TestCase):
         self.assertEqual(type(self).oj3.created_at,
                          type(self).oj3.updated_at,
                          "Fail: Different time/date")
-
-
 
 
 if __name__ == '__main__':
