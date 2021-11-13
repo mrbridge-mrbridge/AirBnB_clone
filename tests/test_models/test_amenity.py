@@ -6,7 +6,7 @@ Test Amenity
 from datetime import datetime
 import inspect
 from models.Amenity import Amenity
-from models.base_model import BaseModel
+from models.base_model import Basemodel
 import pep8
 import unittest
 Amenityz = Amenity.Amenity
@@ -59,9 +59,9 @@ class TestAmenityDocs(unittest.TestCase):
 class TestAmenity(unittest.TestCase):
     """Test the Amenityz class"""
     def test_is_subclass(self):
-        """Test that Amenityz is a subclass of BaseModel"""
+        """Test that Amenityz is a subclass of Basemodel"""
         Amenity = Amenityz()
-        self.assertIsInstance(Amenity, BaseModel)
+        self.assertIsInstance(Amenity, Basemodel)
         self.assertTrue(hasattr(Amenity, "id"))
         self.assertTrue(hasattr(Amenity, "created_at"))
         self.assertTrue(hasattr(Amenity, "updated_at"))
