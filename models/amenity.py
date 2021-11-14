@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 from models.base_model import BaseModel
-"""Amennity Module"""
+
+'''Amenity Class Module'''
 
 
 class Amenity(BaseModel):
-    """Amenity Public Instance"""
+    '''Amenity Class Definition'''
 
     name = ''

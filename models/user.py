@@ -1,10 +1,12 @@
 #!/usr/bin/python3
+
 from models.base_model import BaseModel
-"""User Module"""
+
+'''User Class Module'''
 
 
 class User(BaseModel):
-    """User Public instance"""
+    '''User Class Definition'''
 
     email = ''
     password = ''

@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 from models.base_model import BaseModel
 
-"""Place Module"""
+'''Place Class Module'''
 
 
 class Place(BaseModel):
-    """Place Public instance"""
+    '''Place Class Definition'''
 
     city_id = ''
     user_id = ''

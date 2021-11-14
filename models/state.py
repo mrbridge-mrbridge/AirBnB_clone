@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 from models.base_model import BaseModel
-"""State module"""
+
+'''State Class Module'''
 
 
 class State(BaseModel):
-    """State Public instance"""
+    '''State Class Definition'''
 
     name = ''
