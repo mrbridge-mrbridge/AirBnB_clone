@@ -26,6 +26,10 @@ class HBNBCommand(cmd.Cmd):
                'Place': Place, 'User': User, 'Amenity': Amenity,
                'Review': Review}
 
+    def emptyline(self):
+        """An empty line + ENTER shouldn’t execute anything"""
+        pass
+
     def do_create(self, inslist=None):
         """ Creates a new instance of BaseModel,
         saves it (to the JSON file) and prints the id"""
