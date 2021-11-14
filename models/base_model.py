@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""The Base_model module"""
+"""The Basemodel module"""
 import models
 from datetime import datetime
 import uuid
