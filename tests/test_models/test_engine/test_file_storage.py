@@ -6,13 +6,13 @@ Test FileStorage
 from datetime import datetime
 import inspect
 from models.engine import file_storage
-from models.Amenity import Amenity
+from models.amenity import Amenity
 from models.base_model import BaseModel
-from models.City import City
-from models.Place import Place
-from models.Review import Review
-from models.State import State
-from models.User import User
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 import json
 import os
 import pep8
