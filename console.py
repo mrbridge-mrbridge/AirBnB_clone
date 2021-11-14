@@ -183,10 +183,6 @@ class HBNBCommand(cmd.Cmd):
                 l[0] = l[0].strip('"')
                 self.do_update(" ".join([clsname, objid, l[0], l[1]]))
 
-    def handle_dict(self, clsname, objid, d):
-        """handle dictionary update"""
-        for k, v in d.items():
-            self.do_update(" ".join([clsname, objid, str(k), str(v)]))
 
     def postloop(self):
         """print new line after each loop"""
