@@ -5,6 +5,7 @@ from models.base_model import Basemodel
 
 class User(Basemodel):
     """User Public instance"""
+
     email = ''
     password = ''
     first_name = ''

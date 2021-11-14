@@ -5,4 +5,5 @@ from models.base_model import Basemodel
 
 class Amenity(Basemodel):
     """Amenity Public Instance"""
-    name = ""
+
+    name = ''

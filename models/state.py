@@ -5,4 +5,5 @@ from models.base_model import Basemodel
 
 class State(Basemodel):
     """State Public instance"""
-    name = ""
+
+    name = ''
