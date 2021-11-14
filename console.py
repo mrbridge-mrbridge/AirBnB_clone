@@ -22,16 +22,16 @@ class HBNBCommand(cmd.Cmd):
         """Empty-line"""
         pass
 
-        inslist = {'BaseModel': Basemodel, 'City': City, 'State': State,
-                   'Place': Place, 'User': User, 'Amenity': Amenity,
-                   'Review': Review}
+    inslist = {'BaseModel': Basemodel, 'City': City, 'State': State,
+               'Place': Place, 'User': User, 'Amenity': Amenity,
+               'Review': Review}
 
-    def do_create(self, inlist=None):
+    def do_create(self, inslist=None):
         """ Creates a new instance of BaseModel,
         saves it (to the JSON file) and prints the id"""
-        if not inlist:
+        if not inslist:
             print('** class name missing **')
-        elif not self.inlist.get(inlist):
+        elif not self.inslist.get(inslist):
             print('** class doesn\'t exist **')
 
     def do_show(self, arg):
@@ -88,12 +88,12 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print([str(value) for key, value in models.storage.all().items()])
         else:
-            if not self.inlist.get(arg):
+            if not self.inslist.get(arg):
                 print('** class doesn\'t exist **')
                 return False
             print([str(value) for key, value in models.storage.all()
                    .items()
-                   if type(value) is self.inlist.get(arg)])
+                   if type(value) is self.inslist.get(arg)])
 
     def do_update(self, arg):
         """Updates an instance based on the class nameUpdates an
@@ -145,6 +145,80 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """EOF to exit the console"""
         return True
+
+    def default(self, line):
+        """handle class commands"""
+        l = line.split('.', 1)
+        if len(l) < 2:
+            print('*** Unknown syntax:', l[0])
+            return False
+        inslist, line = l[0], l[1]
+        if inslist not in list(self.clslist.keys()):
+            print('*** Unknown syntax: {}.{}'.format(inslist, line))
+            return False
+        l = line.split('(', 1)
+        if len(l) < 2:
+            print('*** Unknown syntax: {}.{}'.format(inslist, l[0]))
+            return False
+        mthname, args = l[0], l[1].rstrip(')')
+        if mthname not in ['all', 'count', 'show', 'destroy', 'update']:
+            print('*** Unknown syntax: {}.{}'.format(inslist, line))
+            return False
+        if mthname == 'all':
+            self.do_all(inslist)
+        elif mthname == 'count':
+            print(self.count_class(inslist))
+        elif mthname == 'show':
+            self.do_show(inslist + " " + args.strip('"'))
+        elif mthname == 'destroy':
+            self.do_destroy(inslist + " " + args.strip('"'))
+        elif mthname == 'update':
+            lb, rb = args.find('{'), args.find('}')
+            d = None
+            if args[lb:rb + 1] != '':
+                d = eval(args[lb:rb + 1])
+            l = args.split(',', 1)
+            objid, args = l[0].strip('"'), l[1]
+            if d and type(d) is dict:
+                self.handle_dict(inslist, objid, d)
+            else:
+                from shlex import shlex
+                args = args.replace(',', ' ', 1)
+                l = list(shlex(args))
+                l[0] = l[0].strip('"')
+                self.do_update(" ".join([inslist, objid, l[0], l[1]]))
+
+    def handle_dict(self, inslist, objid, d):
+        """handle dictionary update"""
+        for key, value in d.items():
+            self.do_update(" ".join([inslist, objid, str(key), str(value)]))
+
+    def postloop(self):
+        """print new line after each loop"""
+        print()
+
+    @staticmethod
+    def count_class(inslist):
+        """count number of objects of type inslist"""
+        c = 0
+        for key, value in models.storage.all().items():
+            if type(value).__name__ == inslist:
+                c += 1
+        return (c)
+
+    @staticmethod
+    def getType(aval):
+        """return the type of the input string"""
+        try:
+            int(aval)
+            return (int)
+        except ValueError:
+            pass
+        try:
+            float(aval)
+            return (float)
+        except ValueError:
+            return (str)
 
 
 if __name__ == "__main__":
