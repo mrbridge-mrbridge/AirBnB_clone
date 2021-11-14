@@ -148,19 +148,19 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """handle class commands"""
-        l = line.split('.', 1)
-        if len(l) < 2:
-            print('*** Unknown syntax:', l[0])
+        lva = line.split('.', 1)
+        if len(lva) < 2:
+            print('*** Unknown syntax:', lva[0])
             return False
-        inslist, line = l[0], l[1]
+        inslist, line = lva[0], lva[1]
         if inslist not in list(self.clslist.keys()):
             print('*** Unknown syntax: {}.{}'.format(inslist, line))
             return False
-        l = line.split('(', 1)
-        if len(l) < 2:
-            print('*** Unknown syntax: {}.{}'.format(inslist, l[0]))
+        lva = line.split('(', 1)
+        if len(lva) < 2:
+            print('*** Unknown syntax: {}.{}'.format(inslist, lva[0]))
             return False
-        mthname, args = l[0], l[1].rstrip(')')
+        mthname, args = lva[0], lva[1].rstrip(')')
         if mthname not in ['all', 'count', 'show', 'destroy', 'update']:
             print('*** Unknown syntax: {}.{}'.format(inslist, line))
             return False
@@ -177,16 +177,16 @@ class HBNBCommand(cmd.Cmd):
             d = None
             if args[lb:rb + 1] != '':
                 d = eval(args[lb:rb + 1])
-            l = args.split(',', 1)
-            objid, args = l[0].strip('"'), l[1]
+            lva = args.split(',', 1)
+            objid, args = lva[0].strip('"'), lva[1]
             if d and type(d) is dict:
                 self.handle_dict(inslist, objid, d)
             else:
                 from shlex import shlex
                 args = args.replace(',', ' ', 1)
-                l = list(shlex(args))
-                l[0] = l[0].strip('"')
-                self.do_update(" ".join([inslist, objid, l[0], l[1]]))
+                lva = list(shlex(args))
+                lva[0] = lva[0].strip('"')
+                self.do_update(" ".join([inslist, objid, lva[0], lva[1]]))
 
     def handle_dict(self, inslist, objid, d):
         """handle dictionary update"""
