@@ -7,7 +7,7 @@ from datetime import datetime
 import inspect
 from models.engine import file_storage
 from models.Amenity import Amenity
-from models.base_model import Basemodel
+from models.base_model import BaseModel
 from models.City import City
 from models.Place import Place
 from models.Review import Review
@@ -18,7 +18,7 @@ import os
 import pep8
 import unittest
 FileStorage = file_storage.FileStorage
-classes = {"Amenity": Amenity, "Basemodel": Basemodel, "City": City,
+classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
 
 
