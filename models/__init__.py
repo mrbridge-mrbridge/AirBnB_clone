@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This is a inti file
+File Storage
 """
 
 from models.engine.file_storage import FileStorage
