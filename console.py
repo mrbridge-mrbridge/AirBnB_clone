@@ -16,7 +16,6 @@ console starting point
 
 class HBNBCommand(cmd.Cmd):
     """Hbnb Shell"""
-    intro = "Welcome to the Hbnb shell"
     prompt = '(hbnb)'
 
     def emptyline(self):
