@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """
-Test Userx
+Test User
 """
 
 from datetime import datetime
 import inspect
-import models
 from models import User
 from models.base_model import BaseModel
 import pep8
@@ -118,7 +117,3 @@ class TestUser(unittest.TestCase):
         User = Userx()
         string = "[Userx] ({}) {}".format(User.id, User.__dict__)
         self.assertEqual(string, str(User))
-
-
-if __name__ == '__main__':
-    unittest.main()

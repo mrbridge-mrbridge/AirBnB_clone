@@ -112,7 +112,3 @@ class TestCity(unittest.TestCase):
         City = Cityx()
         string = "[Cityx] ({}) {}".format(City.id, City.__dict__)
         self.assertEqual(string, str(City))
-
-
-if __name__ == '__main__':
-    unittest.main()

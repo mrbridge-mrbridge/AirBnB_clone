@@ -111,7 +111,3 @@ class TestReview(unittest.TestCase):
         Review = Reviewx()
         string = "[Reviewx] ({}) {}".format(Review.id, Review.__dict__)
         self.assertEqual(string, str(Review))
-
-
-if __name__ == '__main__':
-    unittest.main()
