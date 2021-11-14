@@ -18,6 +18,16 @@ class HBNBCommand(cmd.Cmd):
                'Amenity': Amenity, 'Place': Place, 'Review': Review,
                'User': User}
 
+    def do_quit(self, arg):
+        """Quit command to exit the program
+        """
+        return True
+
+    def do_EOF(self, arg):
+        """EOF to exit the program
+        """
+        return True
+
     def emptyline(self):
         """An empty line + ENTER shouldn’t execute anything"""
         pass
@@ -131,31 +141,21 @@ class HBNBCommand(cmd.Cmd):
                 obj.updated_at = updatetime
                 models.storage.save()
 
-    def do_quit(self, arg):
-        """Quit command to exit the program
-        """
-        return True
-
-    def do_EOF(self, arg):
-        """EOF to exit the program
-        """
-        return True
-
     def default(self, line):
         """handle class commands"""
-        l = line.split('.', 1)
-        if len(l) < 2:
-            print('*** Unknown syntax:', l[0])
+        lima = line.split('.', 1)
+        if len(lima) < 2:
+            print('*** Unknown syntax:', lima[0])
             return False
-        clsname, line = l[0], l[1]
+        clsname, line = lima[0], lima[1]
         if clsname not in list(self.clslist.keys()):
             print('*** Unknown syntax: {}.{}'.format(clsname, line))
             return False
-        l = line.split('(', 1)
-        if len(l) < 2:
-            print('*** Unknown syntax: {}.{}'.format(clsname, l[0]))
+        lima = line.split('(', 1)
+        if len(lima) < 2:
+            print('*** Unknown syntax: {}.{}'.format(clsname, lima[0]))
             return False
-        mthname, args = l[0], l[1].rstrip(')')
+        mthname, args = lima[0], lima[1].rstrip(')')
         if mthname not in ['all', 'count', 'show', 'destroy', 'update']:
             print('*** Unknown syntax: {}.{}'.format(clsname, line))
             return False
@@ -172,17 +172,16 @@ class HBNBCommand(cmd.Cmd):
             d = None
             if args[lb:rb + 1] != '':
                 d = eval(args[lb:rb + 1])
-            l = args.split(',', 1)
-            objid, args = l[0].strip('"'), l[1]
+            lima = args.split(',', 1)
+            objid, args = lima[0].strip('"'), lima[1]
             if d and type(d) is dict:
                 self.handle_dict(clsname, objid, d)
             else:
                 from shlex import shlex
                 args = args.replace(',', ' ', 1)
-                l = list(shlex(args))
-                l[0] = l[0].strip('"')
-                self.do_update(" ".join([clsname, objid, l[0], l[1]]))
-
+                lima = list(shlex(args))
+                lima[0] = lima[0].strip('"')
+                self.do_update(" ".join([clsname, objid, lima[0], lima[1]]))
 
     def postloop(self):
         """print new line after each loop"""
