@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-from models.base_model import Basemodel
+from models.base_model import BaseModel
 """Amennity Module"""
 
 
-class Amenity(Basemodel):
+class Amenity(BaseModel):
     """Amenity Public Instance"""
 
     name = ''

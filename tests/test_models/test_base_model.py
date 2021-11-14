@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Contains class Basemodel
+Contains class BaseModel
 """
 
 from datetime import datetime
@@ -11,8 +11,8 @@ time = "%Y-%m-%dT%H:%M:%S.%f"
 Base = object
 
 
-class Basemodel:
-    """The Basemodel """
+class BaseModel:
+    """The BaseModel """
 
     def __init__(self, *args, **kwargs):
         """Initialization of the base model"""
@@ -36,7 +36,7 @@ class Basemodel:
             self.updated_at = self.created_at
 
     def __str__(self):
-        """String representation of the Basemodel class"""
+        """String representation of the BaseModel class"""
         return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
                                          self.__dict__)
 

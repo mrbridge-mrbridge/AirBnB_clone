@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-from models.base_model import Basemodel
+from models.base_model import BaseModel
 """User Module"""
 
 
-class User(Basemodel):
+class User(BaseModel):
     """User Public instance"""
 
     email = ''

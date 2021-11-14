@@ -7,7 +7,7 @@ from datetime import datetime
 import inspect
 import models
 from models import review
-from models.base_model import Basemodel
+from models.base_model import BaseModel
 import pep8
 import unittest
 Review = review.Review
@@ -60,9 +60,9 @@ class TestReviewDocs(unittest.TestCase):
 class TestReview(unittest.TestCase):
     """Test the Review class"""
     def test_is_subclass(self):
-        """Test if Review is a subclass of Basemodel"""
+        """Test if Review is a subclass of BaseModel"""
         review = Review()
-        self.assertIsInstance(review, Basemodel)
+        self.assertIsInstance(review, BaseModel)
         self.assertTrue(hasattr(review, "id"))
         self.assertTrue(hasattr(review, "created_at"))
         self.assertTrue(hasattr(review, "updated_at"))

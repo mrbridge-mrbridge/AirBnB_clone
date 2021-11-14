@@ -7,7 +7,7 @@ from datetime import datetime
 import inspect
 import models
 from models import state
-from models.base_model import Basemodel
+from models.base_model import BaseModel
 import pep8
 import unittest
 State = state.State
@@ -60,9 +60,9 @@ class TestStateDocs(unittest.TestCase):
 class TestState(unittest.TestCase):
     """Test the State class"""
     def test_is_subclass(self):
-        """Test that State is a subclass of Basemodel"""
+        """Test that State is a subclass of BaseModel"""
         state = State()
-        self.assertIsInstance(state, Basemodel)
+        self.assertIsInstance(state, BaseModel)
         self.assertTrue(hasattr(state, "id"))
         self.assertTrue(hasattr(state, "created_at"))
         self.assertTrue(hasattr(state, "updated_at"))

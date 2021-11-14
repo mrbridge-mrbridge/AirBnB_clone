@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import cmd
 import models
-from models.base_model import Basemodel
+from models.base_model import BaseModel
 from models.city import City
 from models.state import State
 from models.place import Place
@@ -22,7 +22,7 @@ class HBNBCommand(cmd.Cmd):
         """Empty-line"""
         pass
 
-    inslist = {'BaseModel': Basemodel, 'City': City, 'State': State,
+    inslist = {'BaseModel': BaseModel, 'City': City, 'State': State,
                'Place': Place, 'User': User, 'Amenity': Amenity,
                'Review': Review}
 

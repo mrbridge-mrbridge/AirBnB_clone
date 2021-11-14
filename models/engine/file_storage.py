@@ -1,7 +1,7 @@
 """File Storage"""
 
 import json
-from models.base_model import Basemodel
+from models.base_model import BaseModel
 from models.city import City
 from models.state import State
 from models.place import Place
@@ -38,7 +38,7 @@ class FileStorage:
          (__file_path) exists ; otherwise, do nothing. If the file doesn’t
          exist, no exception should be raised)"""
 
-        inslist = {'BaseModel': Basemodel, 'City': City, 'State': State,
+        inslist = {'BaseModel': BaseModel, 'City': City, 'State': State,
                    'Place': Place, 'User': User, 'Amenity': Amenity,
                    'Review': Review}
         try:

@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""The Basemodel module"""
+"""The BaseModel module"""
 import models
 from datetime import datetime
 import uuid
 
 
-class Basemodel:
+class BaseModel:
     "The Base_model class"
     currentdatetime = datetime.now()
 

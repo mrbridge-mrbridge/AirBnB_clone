@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-from models.base_model import Basemodel
+from models.base_model import BaseModel
 """Review Module"""
 
 
-class Review(Basemodel):
+class Review(BaseModel):
     """Review Public instance"""
 
     place_id = ''

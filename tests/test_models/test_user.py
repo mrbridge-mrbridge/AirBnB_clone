@@ -7,7 +7,7 @@ from datetime import datetime
 import inspect
 import models
 from models import user
-from models.base_model import Basemodel
+from models.base_model import BaseModel
 import pep8
 import unittest
 User = user.User
@@ -60,9 +60,9 @@ class TestUserDocs(unittest.TestCase):
 class TestUser(unittest.TestCase):
     """Test the User class"""
     def test_is_subclass(self):
-        """Test that User is a subclass of Basemodel"""
+        """Test that User is a subclass of BaseModel"""
         user = User()
-        self.assertIsInstance(user, Basemodel)
+        self.assertIsInstance(user, BaseModel)
         self.assertTrue(hasattr(user, "id"))
         self.assertTrue(hasattr(user, "created_at"))
         self.assertTrue(hasattr(user, "updated_at"))
