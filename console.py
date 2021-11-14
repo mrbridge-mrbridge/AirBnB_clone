@@ -19,7 +19,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)'
 
     def emptyline(self):
-        """Empty-line"""
+        """An empty line + ENTER shouldn’t execute anything"""
         pass
 
     inslist = {'BaseModel': BaseModel, 'City': City, 'State': State,
