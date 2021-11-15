@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """this file makes the directory called models a package"""
-from models.engine.file_storage.py import FileStorage
+from models.engine.file_storage import FileStorage
 
 
 storage = FileStorage()

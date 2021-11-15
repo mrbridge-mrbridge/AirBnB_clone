@@ -22,10 +22,9 @@ class BaseModel:
         args: not used
         kwargs: attributes as 'id','created_at','updated_at'
         """
-        if id not in kwargs:
-            self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
         if kwargs:
             for k, v in kwargs.items():
@@ -46,7 +45,7 @@ class BaseModel:
         with the current datetime
         """
         self.updated_at = datetime.now()
-        models.storage.save(self)
+        models.storage.save()
 
     def to_dict(self):
         """returns dictionary of BaseModel"""
