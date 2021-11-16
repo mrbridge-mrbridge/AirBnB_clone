@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""entry point for hbnb console"""
 import cmd
 import models
 from models.base_model import BaseModel
@@ -8,7 +9,6 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 from models.user import User
-"""entry point for hbnb console"""
 
 
 class HBNBCommand(cmd.Cmd):
