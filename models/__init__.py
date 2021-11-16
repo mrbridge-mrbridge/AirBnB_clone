@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-This is a inti file
-"""
+""" init models """
 
 from models.engine.file_storage import FileStorage
 
