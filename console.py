@@ -3,6 +3,8 @@
 import cmd, sys
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+from models import storage
+import shlex
 
 classes = {"BaseModel": BaseModel}
 
@@ -21,98 +23,131 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         """Nothing"""
-        return False
+        pass
 
-    def do_create(self, arg, __name__):
+    def do_create(self, arg):
         """Create command to create and save new BaseModel
         instance to JSON file and print the id"""
 
-        if __name__ is None:
-            return "** class name missing **"
+        cls = shlex.split(arg)
+        if len(cls) == 0:
+            print("** class name missing **")
+            return False
+        elif cls[0] not in classes:
+            print("** class doesn't exist **")
+            return False
+        elif cls[0] in classes:
+            val = classes[cls[0]]()
+            print(val.id)
+            val.save()
 
-        if __name__ not in classes[keys].items():
-            return "** class doesn't exist **"
-        new = BaseModel()
-        BaseModel.save(new)
-        return new.id
-
-    def do_show(self, arg, __name__, id):
+    def do_show(self, arg):
         """Show command prints the string representation of class instance"""
-        if __name__ is None:
-            return "** class name missing **"
+        cls = shlex.split(arg)
+        dikt = storage.all()
+        if len(cls) == 0:
+            print("** class name missing **")
+            return False
 
-        if __name__ not in classes[keys].items():
-            return "** class doesn't exist **"
+        elif len(cls) == 1:
+            print("** instance id missing **")
+            return False
 
-        if id is None:
-            return "** instance id missing **"
+        elif cls[0] not in classes:
+            print("** class doesn't exist **")
+            return False
 
-        if id != __name__.id:
-            return "** no instance found **"
+        elif (cls[0] + "." + cls[1]) not in dikt:
+            print("** no instance found **")
+            return False
 
-        return "[{}] ({}) {}".format(__name__, __name__.id, __name__.__dict__)
+        else:
+            print(dikt[cls[0] + "." + cls[1]])
 
-    def do_destroy(self, arg, __name__, id):
+    def do_destroy(self, arg):
         """Destroy command deletes a class instance based on 
         class name and id"""
-        if __name__ is None:
-            return "** class name missing **"
 
-        if __name__ not in classes[keys].items():
-            return "** class doesn't exist **"
+        cls = shlex.split(arg)
+        dikt = storage.all()
+        if len(cls) == 0:
+            print("** class name missing **")
+            return False
 
-        if id is None:
-            return "** instance id missing **"
+        elif len(cls) == 1:
+            print("** instance id missing **")
+            return False
 
-        if id != __name__.id:
-            return "** no instance found **"
-        dikt = BaseModel.to_dict()
-        if __name__ in dikt:
-            del __name__
-        BaseModel.save()
-        return
+        elif cls[0] not in classes:
+            print("** class doesn't exist **")
+            return False
 
-    def do_all(self, arg, **args):
+        elif (cls[0] + "." + cls[1]) not in dikt:
+            print("** no instance found **")
+            return False
+
+        else:
+            del dikt[(cls[0] + "." + cls[1])]
+            storage.save()
+
+    def do_all(self, arg):
         """All command Prints all string representation of all
         instances based or not on the class name"""
-        if len(args) == 0:
-            BaseModel.__str__()
-            return
-        for i in args:
-            if i not in classes:
-                return "** class doesn't exist **"
-        BaseModel.__str__()
-        return
+        cls = shlex.split(arg)
+        strg = []
 
-    def do_update(self, arg, __name__, id, **args):
+        if len(cls) == 0:
+            for v in storage.all().values():
+                strg.append(v.__str__())
+            print(strg)
+        
+        if len(cls) > 0:
+            if cls[0] in classes:
+                for v in storage.all().values():
+                    strg.append(v.__str__())
+                print(strg)
+
+            elif cls[0] not in classes:
+                print("** class doesn't exist **")
+
+    def do_update(self, arg):
         """Update command Updates an instance based on the class
         name and id by adding or updating attribute
 
         Usage: update <class name> <id> <attribute name> '<attribute value>'
         """
-        if len(args) >= 2:
-            for k, v in kwargs.items():
-                k = args[0]
-                v = args[1]
-            BaseModel(__name__, id, **kwargs)
+        cls = shlex.split(arg)
+        dikt = storage.all()
+        keyyy = cls[0] + "." + cls[1]
 
-        if __name__ is None:
-            return "** class name missing **"
 
-        if __name__ not in classes[keys].items():
-            return "** class doesn't exist **"
+        if len(cls) >= 4:
+            if cls[0] not in classes:
+                print("** class doesn't exist **")
+                return False
+            elif cls[0] in classes:
+                if keyyy in dikt.keys():
+                    setattr(dikt[keyyy], cls[2], cls[3])
+                
+                else:
+                    print("** no instance found **")
+                    return False
 
-        if id is None:
-            return "** instance id missing **"
+        if len(cls) == 0:
+            print("** class name missing **")
+            return False
 
-        if id != __name__.id:
-            return "** no instance found **"
+        if len(cls) == 1:
+            print("** instance id missing **")
+            return False
 
-        if len(args) == 0:
-            return "** attribute name missing **"
+        if len(cls) == 2:
+            print("** attribute name missing **")
+            return False
 
-        if len(args) == 1:
-            return "** value missing **"
+        if len(cls) == 3:
+            print("** value missing **")
+            return False
         
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
