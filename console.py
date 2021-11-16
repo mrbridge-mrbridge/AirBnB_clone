@@ -2,11 +2,23 @@
 """This module is the entry point of the Airbnb command interpreter"""
 import cmd, sys
 from models.base_model import BaseModel
+from models.user import User
 from models.engine.file_storage import FileStorage
 from models import storage
 import shlex
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 
-classes = {"BaseModel": BaseModel}
+classes = {"Amenity": Amenity,
+        "BaseModel": BaseModel,
+        "City": City,
+        "Place": Place,
+        "Review": Review,
+        "State": State,
+        "User": User}
 
 
 class HBNBCommand(cmd.Cmd):
